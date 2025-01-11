@@ -1,6 +1,9 @@
 let tasks = "";
 function addTask() {
   let taskData = document.getElementById("task-input");
+  if (taskData.value === "") {
+    return;
+  }
   tasks += `
     <li>${taskData.value}</li>
   `;
