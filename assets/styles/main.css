@@ -7,6 +7,8 @@
   --main-color: #0075ff;
   --btn-color: white;
   --text-color: black;
+  --list-bg: white;
+  --item-color: rgb(242, 242, 242);
 }
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -16,6 +18,8 @@ body.dark-theme {
   --main-color: #030a13;
   --btn-color: white;
   --text-color: rgb(255, 255, 255);
+  --list-bg: #112847;
+  --item-color: #1a365b;
 }
 img {
   max-width: 100%;
@@ -55,4 +59,42 @@ header a {
 header img {
   width: 50px;
   cursor: pointer;
+}
+@media (min-width: 992px) {
+  section .todo-list {
+    width: 500px;
+    margin: auto;
+  }
+}
+section .todo-list input {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+section .todo-list input,
+section .todo-list button {
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+section .todo-list button {
+  width: 100px;
+  font-weight: bold;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: var(--btn-color);
+}
+section input {
+  width: calc(100% - 105px);
+}
+section ol {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: var(--list-bg);
+}
+section ol li {
+  margin: 10px 0;
+  padding: 10px;
+  color: var(--text-color);
+  line-height: 1.5;
+  background-color: var(--item-color);
 }
