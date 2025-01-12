@@ -3,49 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --main-color: #0075ff;
+  --btn-color: white;
+  --text-color: black;
+}
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background-color: #0075ff;
-}
-
-@media (min-width: 991px) {
-  section {
-    width: 500px;
-    margin: auto;
-  }
-}
-section form {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-section form input {
-  width: 80%;
-  padding: 10px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-}
-section form button {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: white;
-  outline: none;
-  border: none;
-}
-.tasks {
-  background-color: white;
-  color: black;
-  font-weight: bold;
-  list-style-position: inside;
-  max-height: 500px;
-  overflow-y: auto;
-}
-.tasks li {
-  padding: 10px;
-  border-bottom: 1px solid rgb(0 0 0 / 0.1);
 }
