@@ -6,37 +6,36 @@ document.getElementById("switch").onclick = () => {
   }
 };
 
-/*
- * In progress
- * Completed
- */
-
-/*
- * localStorage.setItem("item", value)
- * localStorage.getItem("item")
- * localStorage.removeItem("item")
- */
-
-let taskList = "";
+let taskList = [];
 
 if (localStorage.getItem("tasks") !== null) {
-  taskList = localStorage.getItem("tasks");
+  taskList = JSON.parse(localStorage.getItem("tasks"));
 }
+
+showTask();
 
 function addTask() {
   let taskInput = document.getElementById("task-input");
-  let taskStatus = "In progress";
-  taskList += `
-    <li>${taskInput.value}<br>
-    ${new Date().toLocaleString()}| ${taskStatus}</li>
-  `;
-  localStorage.setItem("tasks", taskList);
-  taskInput.value = "";
-  showTask();
+
+  if (taskInput.value !== "") {
+    taskList.push({ task: taskInput.value, date: new Date().toLocaleString(), status: "In progress" });
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+    taskInput.value = "";
+    showTask();
+  } else {
+    alert("You should Add a Task");
+  }
 }
 
 function showTask() {
-  document.getElementById("task-list").innerHTML = localStorage.getItem("tasks");
+  let taskItem = "";
+  for (let i = 0; i < taskList.length; i++) {
+    taskItem += `
+      <li>${i + 1}- ${taskList[i].task} <br> ${taskList[i].date} ${taskList[i].status}</li>
+    `;
+  }
+
+  document.getElementById("task-list").innerHTML = taskItem;
 }
-showTask();
+
 document.getElementById("add-task-btn").onclick = () => addTask();

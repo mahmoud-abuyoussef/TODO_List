@@ -90,8 +90,12 @@ section ol {
   margin-top: 30px;
   padding: 30px;
   background-color: var(--list-bg);
+  list-style: none;
 }
 section ol li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 10px 0;
   padding: 10px;
   color: var(--text-color);
