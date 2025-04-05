@@ -1,5 +1,4 @@
-"use strict";
-let switchBtn = document.getElementById("switch");
+let switchBtn: HTMLImageElement = document.getElementById("switch") as HTMLImageElement;
 switchBtn.onclick = () => {
   if (document.body.classList.contains("dark-theme")) {
     document.body.classList.remove("dark-theme");
@@ -7,14 +6,25 @@ switchBtn.onclick = () => {
     document.body.classList.add("dark-theme");
   }
 };
-let taskList = [];
+
+interface Task {
+  date: string;
+  status: string;
+  task: string;
+}
+
+let taskList: Task[] = [];
+
 if (localStorage.getItem("tasks") !== null) {
-  const tasks = localStorage.getItem("tasks");
+  const tasks: string | null = localStorage.getItem("tasks");
   taskList = tasks ? JSON.parse(tasks) : [];
 }
+
 showTask();
+
 function addTask() {
-  let taskInput = document.getElementById("task-input");
+  let taskInput: HTMLInputElement = document.getElementById("task-input") as HTMLInputElement;
+
   if (taskInput.value !== "") {
     taskList.push({ task: taskInput.value, date: new Date().toLocaleString(), status: "In progress" });
     localStorage.setItem("tasks", JSON.stringify(taskList));
@@ -24,15 +34,20 @@ function addTask() {
     alert("You should Add a Task");
   }
 }
+
 function showTask() {
-  let taskItem = "";
-  for (let i = 0; i < taskList.length; i++) {
+  let taskItem: string = "";
+  for (let i: number = 0; i < taskList.length; i++) {
     taskItem += `
       <li>${i + 1}- ${taskList[i].task} <br> ${taskList[i].date} ${taskList[i].status}</li>
     `;
   }
-  let taskListElement = document.getElementById("task-list");
+
+  let taskListElement: HTMLOListElement = document.getElementById("task-list") as HTMLOListElement;
+
   taskListElement.innerHTML = taskItem;
 }
-let addTaskBtn = document.getElementById("add-task-btn");
+
+let addTaskBtn: HTMLButtonElement = document.getElementById("add-task-btn") as HTMLButtonElement;
+
 addTaskBtn.onclick = () => addTask();
