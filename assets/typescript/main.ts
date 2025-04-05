@@ -22,7 +22,7 @@ if (localStorage.getItem("tasks") !== null) {
 
 showTask();
 
-function addTask() {
+function addTask(): void {
   let taskInput: HTMLInputElement = document.getElementById("task-input") as HTMLInputElement;
 
   if (taskInput.value !== "") {
@@ -35,7 +35,7 @@ function addTask() {
   }
 }
 
-function showTask() {
+function showTask(): void {
   let taskItem: string = "";
   for (let i: number = 0; i < taskList.length; i++) {
     taskItem += `
